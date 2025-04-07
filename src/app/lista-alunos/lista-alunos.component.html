@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="filtro-wrapper">
+    <input type="text" [(ngModel)]="filtro" placeholder="Pesquisar por nome" class="filtro-input" />
+    <button (click)="novo()" class="novo-btn">
+      <mat-icon>person_add</mat-icon> Novo Aluno
+    </button>
+  </div>
+
+  <div class="table-wrapper">
+    <table class="table">
+      <thead>
+        <tr>
+          <th (click)="ordenarPor('id')">
+            ID <span *ngIf="ordemAtual === 'id'">{{ ordemCrescente ? '↑' : '↓' }}</span>
+          </th>
+          <th (click)="ordenarPor('nome')">
+            Nome <span *ngIf="ordemAtual === 'nome'">{{ ordemCrescente ? '↑' : '↓' }}</span>
+          </th>
+          <th (click)="ordenarPor('idade')">
+            Idade <span *ngIf="ordemAtual === 'idade'">{{ ordemCrescente ? '↑' : '↓' }}</span>
+          </th>
+          <th (click)="ordenarPor('curso')">
+            Curso <span *ngIf="ordemAtual === 'curso'">{{ ordemCrescente ? '↑' : '↓' }}</span>
+          </th>
+          <th (click)="ordenarPor('periodo')">
+            Período <span *ngIf="ordemAtual === 'periodo'">{{ ordemCrescente ? '↑' : '↓' }}</span>
+          </th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let aluno of alunosFiltrados()">
+          <td>{{ aluno.id }}</td>
+          <td>{{ aluno.nome }}</td>
+          <td>{{ aluno.idade }}</td>
+          <td>{{ aluno.curso }}</td>
+          <td>{{ aluno.periodo }}</td>
+          <td class="actions">
+            <button (click)="editar(aluno.id)" mat-icon-button color="primary" aria-label="Editar">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button (click)="excluir(aluno.id)" mat-icon-button color="warn" aria-label="Excluir">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
