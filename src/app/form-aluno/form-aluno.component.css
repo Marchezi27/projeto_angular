@@ -8,6 +8,16 @@
     font-family: sans-serif;
     box-sizing: border-box;
   }
+
+  .erro {
+    color: red;
+    font-size: 0.8rem;
+    margin-top: 4px;
+  }
+  input.ng-touched.ng-invalid {
+    border-color: red;
+  }
+  
   
   @media (max-width: 600px) {
     .form-container {
