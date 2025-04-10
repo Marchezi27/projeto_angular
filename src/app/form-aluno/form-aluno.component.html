@@ -1,29 +1,41 @@
 <div class="form-container">
-    <form [formGroup]="alunoForm" (ngSubmit)="salvar()">
-      <div class="form-group">
-        <label>Nome</label>
-        <input type="text" formControlName="nome" [placeholder]="alunoExistente?.nome || 'Digite o nome'" />
+  <form [formGroup]="alunoForm" (ngSubmit)="salvar()">
+    <div class="form-group">
+      <label>Nome</label>
+      <input type="text" formControlName="nome" [placeholder]="alunoExistente?.nome || 'Digite o nome'" />
+      <div class="erro" *ngIf="alunoForm.get('nome')?.touched && alunoForm.get('nome')?.invalid">
+        <small *ngIf="alunoForm.get('nome')?.errors?.['required']">Nome é obrigatório.</small>
       </div>
-  
-      <div class="form-group">
-        <label>Idade</label>
-        <input type="number" formControlName="idade" [placeholder]="alunoExistente?.idade?.toString() || 'Digite a idade'" />
+    </div>
+
+    <div class="form-group">
+      <label>Idade</label>
+      <input type="number" formControlName="idade" [placeholder]="alunoExistente?.idade?.toString() || 'Digite a idade'" />
+      <div class="erro" *ngIf="alunoForm.get('idade')?.touched && alunoForm.get('idade')?.invalid">
+        <small *ngIf="alunoForm.get('idade')?.errors?.['required']">Idade é obrigatória.</small>
+        <small *ngIf="alunoForm.get('idade')?.errors?.['min']">Idade deve ser maior que zero.</small>
       </div>
-  
-      <div class="form-group">
-        <label>Curso</label>
-        <input type="text" formControlName="curso" [placeholder]="alunoExistente?.curso || 'Digite o curso'" />
+    </div>
+
+    <div class="form-group">
+      <label>Curso</label>
+      <input type="text" formControlName="curso" [placeholder]="alunoExistente?.curso || 'Digite o curso'" />
+      <div class="erro" *ngIf="alunoForm.get('curso')?.touched && alunoForm.get('curso')?.invalid">
+        <small *ngIf="alunoForm.get('curso')?.errors?.['required']">Curso é obrigatório.</small>
       </div>
-  
-      <div class="form-group">
-        <label>Período</label>
-        <input type="text" formControlName="periodo" [placeholder]="alunoExistente?.periodo || 'Digite o período'" />
+    </div>
+
+    <div class="form-group">
+      <label>Período</label>
+      <input type="text" formControlName="periodo" [placeholder]="alunoExistente?.periodo || 'Digite o período'" />
+      <div class="erro" *ngIf="alunoForm.get('periodo')?.touched && alunoForm.get('periodo')?.invalid">
+        <small *ngIf="alunoForm.get('periodo')?.errors?.['required']">Período é obrigatório.</small>
       </div>
-  
-      <div class="form-actions">
-        <button type="submit">Salvar</button>
-        <button type="button" (click)="voltar()">Voltar</button>
-      </div>
-    </form>
-  </div>
-  
+    </div>
+
+    <div class="form-actions">
+      <button type="submit">Salvar</button>
+      <button type="button" (click)="voltar()">Voltar</button>
+    </div>
+  </form>
+</div>
